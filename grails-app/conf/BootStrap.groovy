@@ -15,9 +15,9 @@ class BootStrap {
         List<User> users = createUsers()
         List<Topic> topics = createTopics()
         createResources()
-        subscribeTopics()
-        createReadingItems()
-      //  createResourceRatings()
+        subscribeTopics(users,topics)
+        createReadingItems(users)
+        createResourceRatings(users)
 
 
     }
@@ -35,7 +35,7 @@ class BootStrap {
     }
 
     User createAdmin() {
-        User admin = new User(firstName: "Neha", lastName: "Singhal", username: "Neha", email: "neha@gmail.com", password: "123456", admin: 1)
+        User admin = new User(firstName: "Neha", lastName: "Singhal", username: "Neha", email: "neha@gmail.com",confirmPassword: "123456", password: "123456", admin: 1)
         if (admin.save()) {
             log.info "User ${admin} saved successfully"
         } else {
@@ -47,7 +47,7 @@ class BootStrap {
 
     User createActiveUser() {
 
-        User user = new User(firstName: "Swati", lastName: "Singhal", username: "Swati", email: "swati@gmail.com", password: "*123#11", admin: 0, active: 1)
+        User user = new User(firstName: "Swati", lastName: "Singhal", username: "Swati", email: "swati@gmail.com",confirmPassword: "*123*11", password: "*123*11", admin: 0, active: 1)
         if (user.save()) {
             log.info("User ${user} saved successfully")
         } else {
@@ -114,7 +114,6 @@ class BootStrap {
 
       List<Document_Resource> createDocumentResources(Topic topic) {
           List<Document_Resource> documentResources = []
-          print"heloo"
           (1..2).each {
               Document_Resource documentResource = new Document_Resource(topic: topic, createdBy: topic.createdBy, discription: "${topic.name} Description of document", filePath: "/home/neha/Desktop/${topic}${it}")
               if (documentResource.save()) {
@@ -128,11 +127,11 @@ class BootStrap {
           documentResources
       }
 
-    def subscribeTopics() {
-        (1..2).each {
-            User user = User.get(it)
-            (1..10).each {
-                Topic topic = Topic.get(it)
+    def subscribeTopics(List<User> users,List<Topic> topics) {
+        users.each {
+            User user = User.findByUsername(it)
+            topics.each {
+                Topic topic = Topic.findByName(it)
                 if (user != topic.createdBy) {
                     subscribeTopic(user, topic)
                 }
@@ -150,10 +149,10 @@ class BootStrap {
 
     }
 
-    def createReadingItems() {
-        (1..2).each {
-            User user = User.get(it)
-            (1..20).each {
+    def createReadingItems(List<User> users) {
+        users.each {
+            User user = User.findByUsername(it)
+            (1..40).each {
                 Resource resource = Resource.get(it)
                 if (user != resource.createdBy) {
                     print resource.createdBy
@@ -164,7 +163,7 @@ class BootStrap {
     }
 
     def readItem(User user, Resource resource) {
-        ReadingItem readingItem = new ReadingItem(resource: resource, user: user, isRead: true)
+        ReadingItem readingItem = new ReadingItem(resource: resource, user: user, isRead: false)
         if (readingItem.save()) {
             log.info("${resource} is marked as Read for ${user}")
         } else {
@@ -172,10 +171,10 @@ class BootStrap {
         }
     }
 
- /*   def createResourceRatings(){
-        (1..2).each {
-            User user=User.get(it)
-            (1..20).each {
+    def createResourceRatings(List<User> users){
+        users.each {
+            User user=User.findByUsername(it)
+            (1..40).each {
                 ReadingItem readingItem=ReadingItem.get(it)
                 if(user!=readingItem.user)
                 {
@@ -188,14 +187,14 @@ class BootStrap {
 
     def createRating(User user,ReadingItem readingItem){
         ResourceRating resourceRating=new ResourceRating(createdBy: user,resource: readingItem.resource,score: 3)
-        if(readingItem.save()){
+        if(resourceRating.save()){
             log.info("Saved Rating")
 
         }
         else{
             log.error("${readingItem.errors.allErrors}")
         }
-    }*/
+    }
     def destroy = {
     }
 }

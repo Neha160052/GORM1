@@ -12,30 +12,38 @@ class User {
     boolean active
     Date dateCreated
     Date lastUpdated
-    static transients = ['name']
+    String confirmPassword
+    static transients = ['name', 'confirmPassword']
 
-    static hasMany = [topics:Topic,subscriptions:Subscription,readingitems:ReadingItem,resources:Resource]
+    static hasMany = [topics: Topic, subscriptions: Subscription, readingitems: ReadingItem, resources: Resource]
 
     static constraints = {
-        email(unique: true, email: true,blank:false)
-        password(blank:false, minSize: 5)
+        email(unique: true, email: true, blank: false)
+        password(blank: false, minSize: 5)
         firstName(blank: false)
         lastName(blank: false)
         username(blank: false)
-        photo(nullable:true)
+        photo(nullable: true)
         admin(nullable: true)
-        active(nullable:true)
+        active(nullable: true)
+        confirmPassword(bindable: true, nullable: true, blank: true, validator: { val, obj ->
+            if (!obj.id && (obj.password != val || !val)) {
+                return 'password.do.not.match.confirmPassword'
+            }
+        })
 
+    }
 
+    static mapping = {
+        sort id: 'desc'
     }
 
     String getName() {
-        [this.firstName,this.lastName].join(' ');
+        [this.firstName, this.lastName].join(' ');
 
     }
 
-    String toString()
-    {
+    String toString() {
         return username;
     }
 

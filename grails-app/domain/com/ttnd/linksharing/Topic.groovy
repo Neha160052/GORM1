@@ -21,6 +21,10 @@ class Topic {
 
     }
 
+    static mapping = {
+        sort name: 'asc'
+    }
+
     String toString(){
         return name
     }
