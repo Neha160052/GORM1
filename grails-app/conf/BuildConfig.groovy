@@ -25,7 +25,8 @@ grails.project.dependency.resolver = "maven" // or ivy
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
     plugins {
-        runtime ':console:1.5.7'
+       compile "org.grails.plugins:console:1.5.7"
+       // runtime ':console:1.5.7'
         // ...
     }
     inherits("global") {

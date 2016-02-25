@@ -154,8 +154,9 @@ class BootStrap {
             User user = User.findByUsername(it)
             (1..40).each {
                 Resource resource = Resource.get(it)
+                Topic topic=resource.topic
                 if (user != resource.createdBy) {
-                    print resource.createdBy
+                    if(Subscription.findByUserAndTopic(user,topic))
                     readItem(user, resource)
                 }
             }
