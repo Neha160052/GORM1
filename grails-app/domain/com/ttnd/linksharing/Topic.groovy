@@ -10,7 +10,7 @@ class Topic {
     Date lastUpdated
     Visibility visibility
 
-    static hasMany = [subscriptions: Subscription, resource: Resource]
+    static hasMany = [subscriptions: Subscription, resources: Resource]
     //  static belongsTo = [user:User]
 
 
@@ -29,20 +29,29 @@ class Topic {
         return name
     }
 
-    static TopicVO getTrendingTopics() {
-        List results = Topic.createCriteria().list {
+    static List<TopicVO> getTrendingTopics() {
+        List<TopicVO> topicVOList = []
+        def criteria = Resource.createCriteria()
+        List result = criteria.list(max: 5) {
             projections {
-                createAlias("Resource", "r")
-                groupProperty("r.id")
-                property("r.name")
-                count("r.id", "totalResources")
+                createAlias('topic', 't')
+                property('t.id', 'topicId')
+                property('t.name', 'topicName')
+                property('t.visibility', 'topicVisibility')
+                rowCount('resource_count')
+                property('t.createdBy')
             }
-            order("totalResources", "desc")
-            order("r.name", "desc")
-            maxResults 10
-        }
-        new TopicVO(id: this.id, name: this.name, visibility: this.visibility, count: results[1], createdBy: this.createdBy)
 
+            groupProperty('t.id')
+            eq('t.visibility', Visibility.PUBLIC)
+            order('resource_count', 'desc')
+            order('topicName', 'desc')
+        }
+
+        result.each {
+            topicVOList.add(new TopicVO(id: it[0], name: it[1], visibility: it[2], count: it[3], createdBy: it[4]))
+        }
+        return topicVOList
     }
 
     def afterInsert() {

@@ -8,6 +8,9 @@
 //= require jquery
 //= require_tree .
 //= require_self
+//=require bootstrap.min.js
+//=require npm.js
+
 
 if (typeof jQuery !== 'undefined') {
 	(function($) {

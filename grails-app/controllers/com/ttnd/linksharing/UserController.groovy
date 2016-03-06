@@ -8,6 +8,9 @@ class UserController {
       //  render "User Dashbord"
     }
 
+    def forgetPassword(){
+        render(template: 'forgetPassword')
+    }
     def register() {
         User user = new User(firstName: "Ashu",lastName: "Singhal",email: "ashu@gmail.com",username: "Ashu", password: 'test',confirmPassword: 'test',active: true)
         if (user.validate()) {

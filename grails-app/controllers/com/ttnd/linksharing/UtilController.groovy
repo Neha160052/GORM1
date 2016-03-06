@@ -11,4 +11,9 @@ class UtilController {
         log.fatal("sample fatal")
 
     }
+
+    def application(){
+        User user=session.user
+      //  render (view:"application",map:[user:"session.user"])
+    }
 }

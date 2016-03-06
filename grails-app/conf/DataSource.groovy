@@ -5,7 +5,7 @@ dataSource {
      username = "sa"
      password = ""    */
 
-    logSql=true
+  //  logSql=true
     pooled = true
     driverClassName = "com.mysql.jdbc.Driver"
     dialect = org.hibernate.dialect.MySQL5InnoDBDialect
@@ -30,7 +30,7 @@ environments {
              url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"*/
 
 
-            dbCreate = "create"
+            dbCreate = "create-drop"
             url = "jdbc:mysql://localhost:3306/Linksharing"
         }
     }

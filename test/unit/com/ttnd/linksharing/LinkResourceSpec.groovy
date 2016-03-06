@@ -1,6 +1,5 @@
 package com.ttnd.linksharing
 
-import grails.test.mixin.TestFor
 import spock.lang.Specification
 
 
@@ -8,7 +7,7 @@ import spock.lang.Specification
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
 
-class Link_ResourceSpec extends Specification {
+class LinkResourceSpec extends Specification {
 
     def setup() {
     }
@@ -21,7 +20,7 @@ class Link_ResourceSpec extends Specification {
         given: "user created Resource"
         User user = new User(firstName: "Neha", lastName: "Singhal", email: "a@b.com", password: "qwerty", username: "abc")
         Topic topic = new Topic(name:"grails", visibility:Visibility.PRIVATE, createdBy: user)
-        Link_Resource linkResource = new Link_Resource(url: url,description:"this is helpfull" ,topic:topic ,createdBy:user )
+        LinkResource linkResource = new LinkResource(url: url,description:"this is helpfull" ,topic:topic ,createdBy:user )
 
         when: "check for validation"
         Boolean result = linkResource.validate()

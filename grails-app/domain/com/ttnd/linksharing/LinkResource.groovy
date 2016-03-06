@@ -1,6 +1,6 @@
 package com.ttnd.linksharing
 
-class Link_Resource extends Resource{
+class LinkResource extends Resource{
     String url
 
     static constraints = {

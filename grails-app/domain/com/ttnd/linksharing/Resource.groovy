@@ -33,14 +33,41 @@ abstract  class Resource  {
         new RatingInfoVO(totalScore: result[0], totalVotes: result[1], averageScore: result[2])
 
     }
+
+
+    static List getTopPosts() {
+        List resourceIdWithMaximumRatings = Resource.createCriteria().list {
+
+            projections{
+                rating{
+                    count('id','rCount')
+                }
+            }
+            groupProperty('id')
+            order('rCount')
+            maxResults(5)
+        }.collect{
+            it[1]
+        }
+        return Resource.getAll(resourceIdWithMaximumRatings)
+    }
+
+    static List<Resource> getRecentResources(){
+        List<Resource> recentResources=Resource.createCriteria().list(max:2,offset:0,sort:'lastUpdated',order:'desc') {}
+    }
     static namedQueries = {
         search { ResourceSearchCO co->
             if(co.topicId){
-                eq('topic.id',co.topicId)
-                'topic'{
-                eq('visibility',co.getVissiblityEnum())
+                topic{
+                    eq('id',co.topicId)
                 }
             }
+            if(co.visibility){
+                topic{
+                    eq('visibility',Visibility.getEnum(co.visibility))
+                }
+            }
+
         }
     }
 

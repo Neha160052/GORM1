@@ -4,41 +4,47 @@ import CO.ResourceSearchCO
 import VO.TopicVO
 
 class TopicController {
-   // static scaffold = true
+    // static scaffold = true
 
-    def index() { }
-
-    def trendingTopic(){
-        TopicVO vo=Topic.getTrendingTopics()
-        render"id=${vo.id},name=${vo.name},createdBy=${vo.createdBy},visibilty=${vo.visibility},count=${vo.count}"
+    def index() {
+        Topic topic=Topic.findByName(params.id)
+        print topic
+        render(view: "show")
     }
 
-   def show(ResourceSearchCO co){
-        Topic topic=Topic.read(co.topicId)
-        if(!topic){
-            redirect(controller: "Login",action: "index")
-            render"flash.message="This Topic does not exist""
-        }
-        else{
-           if(topic.visibility==Visibility.PUBLIC){
-               render"Sucsess"
-           }
-            else {
-               if(Subscription.findByTopicAndUser(session.user,topic)){
-                   render"Success"
-               }
-               else {
-                  render flash.error = ""
-                   redirect(controller: "Login", action: "index")
-               }
-           }
+    def trendingTopic() {
+        List<TopicVO> vo = Topic.getTrendingTopics()
+        vo.each {
+            render "id=${it.id},name=${it.name},createdBy=${it.createdBy},visibilty=${it.visibility},count=${it.count}"
         }
     }
 
-   def save(String topicName,String seriousness){
-      Topic topic=Topic.findByName(topicName)
-       if (topic.createdBy==session.user){
-         
-       }
+    def show(ResourceSearchCO co) {
+        Topic topic = Topic.read(co.topicId)
+        if (!topic) {
+            redirect(controller: "Login", action: "index")
+            render "flash.message=" This Topic does not exist ""
+        } else {
+            if (topic.visibility == Visibility.PUBLIC) {
+                return [topic:topic]
+            } else {
+                if (Subscription.findByTopicAndUser(session.user, topic)) {
+                    render "Success"
+                } else {
+                    render flash.error = "You have to Login first to see this Topic"
+                    redirect(controller: "Login", action: "index")
+                }
+            }
+        }
+    }
+
+    def save(String topicName, String visibility) {
+        Topic topic = new Topic(name: topicName, createdBy: session.user, visibility: Visibility.getEnum(visibility))
+        if (topic.validate()) {
+            topic.save()
+            render "Success"
+        } else {
+            render "Error"
+        }
     }
 }

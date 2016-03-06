@@ -1,6 +1,6 @@
 package com.ttnd.linksharing
 
-class Document_Resource extends Resource {
+class DocumentResource extends Resource {
     String filePath
     Date dateCreated
     Date lastUpdated

@@ -6,8 +6,8 @@ import com.ttnd.linksharing.Subscription
 import com.ttnd.linksharing.Topic
 import com.ttnd.linksharing.User
 import com.ttnd.linksharing.Visibility
-import com.ttnd.linksharing.Link_Resource
-import com.ttnd.linksharing.Document_Resource
+import com.ttnd.linksharing.LinkResource
+import com.ttnd.linksharing.DocumentResource
 
 class BootStrap {
 
@@ -84,8 +84,8 @@ class BootStrap {
     }
 
     def createResources() {
-        List<Link_Resource> linkResources = []
-        List<Document_Resource> documentResources = []
+        List<LinkResource> linkResources = []
+        List<DocumentResource> documentResources = []
         if (Resource.count() == 0) {
             (1..10).each {
 
@@ -98,10 +98,10 @@ class BootStrap {
 
     }
 
-    List<Link_Resource> createLinkResources(Topic topic) {
-        List<Link_Resource> linkResources = []
+    List<LinkResource> createLinkResources(Topic topic) {
+        List<LinkResource> linkResources = []
         (1..2).each {
-            Link_Resource linkResource = new Link_Resource(topic: topic, createdBy: topic.createdBy, discription: "${topic.name}'s url Description", url: "https://www.${topic.name}${it}.com")
+            LinkResource linkResource = new LinkResource(topic: topic, createdBy: topic.createdBy, discription: "${topic.name}'s url Description", url: "https://www.${topic.name}${it}.com")
             if (linkResource.save()) {
                 linkResources.add(linkResource)
                 log.info "${topic} ${it}"
@@ -112,10 +112,10 @@ class BootStrap {
         linkResources
     }
 
-      List<Document_Resource> createDocumentResources(Topic topic) {
-          List<Document_Resource> documentResources = []
+      List<DocumentResource> createDocumentResources(Topic topic) {
+          List<DocumentResource> documentResources = []
           (1..2).each {
-              Document_Resource documentResource = new Document_Resource(topic: topic, createdBy: topic.createdBy, discription: "${topic.name} Description of document", filePath: "/home/neha/Desktop/${topic}${it}")
+              DocumentResource documentResource = new DocumentResource(topic: topic, createdBy: topic.createdBy, discription: "${topic.name} Description of document", filePath: "/home/neha/Desktop/${topic}${it}")
               if (documentResource.save()) {
                   documentResources.add(documentResource)
                   log.info "${topic} ${it}"
