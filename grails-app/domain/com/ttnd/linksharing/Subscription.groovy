@@ -1,20 +1,22 @@
 package com.ttnd.linksharing
 
-//enum Seriousness{SERIOUS, VERY_SERIOUS, CASUAL}
 class Subscription {
 
-    Topic topic
-    User user
-    Seriousness seriousness
-
-    static belongsTo = [user:User,topic:Topic]
-
+    User user;
+    Seriousness seriousness = Seriousness.SERIOUS;
+    Date dateCreated;
+    Date lastUpdated;
 
     static constraints = {
-        user(unique: ['topic'])
+        user nullable:false, blank:false,unique:['topic'];
+        topic nullable:false, blank:false;
+    }
 
-    }
     static mapping = {
-        seriousness defaultValue:"Seriousness.SERIOUS"
+        user (lazy: false)
+        topic( lazy:false)
     }
+// //static fetchMode=[subscribedBy:'eager',topic:'eager']
+
+    static belongsTo = [topic:Topic];
 }
