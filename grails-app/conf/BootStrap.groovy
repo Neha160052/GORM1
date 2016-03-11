@@ -115,7 +115,7 @@ class BootStrap {
       List<DocumentResource> createDocumentResources(Topic topic) {
           List<DocumentResource> documentResources = []
           (1..2).each {
-              DocumentResource documentResource = new DocumentResource(topic: topic, createdBy: topic.createdBy, discription: "${topic.name} Description of document", filePath: "/home/neha/Desktop/${topic}${it}")
+              DocumentResource documentResource = new DocumentResource(topic: topic, createdBy: topic.createdBy, discription: "${topic.name} Description of document", filePath: "/home/neha/Desktop/${topic}${it}",fileName: "Document${it}")
               if (documentResource.save()) {
                   documentResources.add(documentResource)
                   log.info "${topic} ${it}"

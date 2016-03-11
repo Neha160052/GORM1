@@ -13,7 +13,7 @@
                     <label for="url" class="col-sm-2 control-label">link* </label>
                     <div class="col-sm-10">
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="url">
+                            <g:textField class="form-control" name="url"></g:textField>
                         </div>
                         <div class="col-sm-6">
                             <button type="submit" class="btn btn-primary">Browse</button>
@@ -24,14 +24,14 @@
                 <div class="form-group">
                     <label for="discription" class="col-sm-2 control-label">Discription* </label>
                     <div class="col-sm-10">
-                        <input type="textbox" class="form-control" id="discription">
+                        <g:textField class="form-control" name="discription"></g:textField>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="topicName" class="col-sm-2 control-label">Topic* </label>
                     <div class="col-sm-10">
-                        <g:select name="topicName" from="${Topic.list()}" optionKey=""
+                        <g:select name="topicName" from="${Topic.list()}" value=""
                                   class="btn btn-default dropdown-toggle" type="button"
                                   data-toggle="dropdown">
 
@@ -41,7 +41,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-offset-6 col-sm-2">
-                        <button class="btn btn-primary btn-sm">Share</button>
+                        <g:submitButton class="btn btn-primary" name="Save">Save</g:submitButton>
                     </div>
                     <div class="col-sm-2">
                         <button class="btn btn-primary btn-sm">Cancle</button>

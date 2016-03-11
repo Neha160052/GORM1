@@ -1,9 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: neha
-  Date: 2/3/16
-  Time: 3:18 PM
---%>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
@@ -14,9 +8,15 @@
 </head>
 
 <body>
+<g:if test="${flash.error}">
+    <div class="alert alert-error" style="display: block">${flash.error}</div>
+</g:if>
+<g:if test="${flash.message}">
+    <div class="message" style="display: block">${flash.message}</div>
+</g:if>
 <div class="container">
 <div class="col-sm-6">
-    <!--first Box-->
+
     <div class="row">
         <div class="panel panel-default" style="margin:15px">
             <div class="panel-body">
@@ -26,17 +26,17 @@
                     </div>
                     <div class="col-sm-8">
                         <div class="row">
-                            <h4>Uday Partap Singh</h4>
-                            <p class="text-muted">@uday</p>
+                            <h4>${session.user}</h4>
+                            <p class="text-muted">@${session.user}</p>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
-                                <p class="text-muted">subscribers</p>
-                                <a href="#">34</a>
+                                <p class="text-muted">subscriptions</p>
+                                <ls:subscriptionCount userId="${session.user.id}"></ls:subscriptionCount>
                             </div>
                             <div class="col-sm-6">
                                 <p class="text-muted">Topics </p>
-                                <a href="#">30</a>
+                                <ls:userTopics></ls:userTopics>
                             </div>
                         </div>
                     </div>
@@ -44,8 +44,9 @@
                 </div>
             </div>
         </div>
+        <g:render template="/topic/subscribedTopics" map="${subscribedTopics}"/>
     <div class="row">
-    <g:render template="/topic/trendingTopics" map="${trendingTopics}"/>
+        <ls:trendingTopics/>
     </div>
 </div>
 </div>

@@ -5,15 +5,15 @@ class LinkResourceController {
 
     def index() { }
 
-    def saveLinkResource(String url, String discription, Integer topicName){
+    def saveLinkResource(String url, String discription, String topicName){
         User user=session.user
-        Topic topic=Topic.findById(topicName)
+        Topic topic=Topic.findByName(topicName)
         println topicName
         Resource linkResource=new LinkResource(url: url,discription:discription,createdBy: user,topic: topic)
         if(linkResource.validate()){
             linkResource.save(flush: true)
             flash.message="Link Resource Saved"
-            render flash.message
+            forward controller: "login", action: "loginHandler"
         }
         else{
             def err

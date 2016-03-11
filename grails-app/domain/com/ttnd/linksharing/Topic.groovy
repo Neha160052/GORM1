@@ -54,6 +54,24 @@ class Topic {
         return topicVOList
     }
 
+    boolean isPublic(long id) {
+        Topic topic=Topic.read(id)
+        if(topic.visibility==Visibility.PUBLIC){
+            return true
+        }else {
+            return false
+        }
+    }
+
+    boolean canViewedBy(long id,User user){
+        Topic topic=Topic.read(id)
+        if(isPublic(id)||topic.createdBy.id==user.id){
+            return true
+        }else {
+            return false
+        }
+    }
+
     def afterInsert() {
         Topic.withNewSession {
             Subscription subscription = new Subscription(topic: this, user: this.createdBy, seriousness: Seriousness.VERY_SERIOUS)

@@ -71,4 +71,16 @@ abstract  class Resource  {
         }
     }
 
+      static boolean isLinkResource(Long id){
+         Resource resource=Resource.get(id)
+        if(resource.class.equals(LinkResource)){
+            println "1111111111111111111111111"
+            return true
+        }else{
+            println "222222222222222222222222"
+            return false
+        }
+
+    }
+
 }

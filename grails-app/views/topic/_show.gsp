@@ -8,7 +8,9 @@
                     <div class="row" style="font-size:25px">
                         <div class="col-sm-4" style="font-size:8px">${topPost.createdBy}</div>
                         <div class="col-sm-6" style="font-size:8px"><p class="text-muted">@${topPost.createdBy} 10min</p></div>
-                        <div class="col-sm-2" style="font-size:8px"><a hrf="">${topPost.topic}</a></div>
+                        <div class="col-sm-2" style="font-size:8px">
+                            <g:link controller="topic" action="show" params="[topicId:topPost.topic?.id]">${topPost.topic}</g:link>
+                        </div>
                     </div>
                     <div class="row">
                         <p>${topPost.discription}</p>
@@ -24,7 +26,7 @@
                             <span class="fa fa-google-plus"></span>
                         </div>
                         <div class="col-sm-4">
-                            <a href=""><u>View Post </u></a>
+                            <g:link controller="resource" action="show" params="[id:topPost?.id]">View Post</g:link>
                         </div>
                     </div>
                 </div>

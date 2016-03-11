@@ -4,22 +4,35 @@ import CO.ResourceSearchCO
 import VO.RatingInfoVO
 
 class ResourceController {
-   // static scaffold =Resource
+    // static scaffold =Resource
 
-    def index() { }
-
-    def search(ResourceSearchCO co){
-         if(co.q){
-             co.visibility=Visibility.PUBLIC
-         }
+    def index() {
+        render("sucess")
     }
 
-    def show(long id){
-        Resource resource=Resource.get(id)
-        RatingInfoVO vo=resource.ratingInfo
-        render"Total Score=${vo.totalScore},Total Votes=${vo.totalVotes},Average Score=${vo.averageScore}"
-
+    def search(ResourceSearchCO co) {
+        if (co.q) {
+            co.visibility = Visibility.PUBLIC
+        }
     }
 
+    def show(long id) {
+        User user = session.user
+        Resource resource = Resource.get(id)
+        [resource: resource]
+    }
+
+    def delete(long id) {
+        User user = session.user
+        print user
+        Resource resource = Resource.get(id)
+        if (user.canDeleteResource(resource)) {
+            resource.delete()
+            render "Resource is detleted"
+        } else {
+            render "Can not Delete it"
+        }
+
+    }
 
 }

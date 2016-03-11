@@ -31,7 +31,7 @@ environments {
 
 
             dbCreate = "create-drop"
-            url = "jdbc:mysql://localhost:3306/Linksharing"
+            url = "jdbc:mysql://localhost:3306/linksharing_demo"
         }
     }
     test {

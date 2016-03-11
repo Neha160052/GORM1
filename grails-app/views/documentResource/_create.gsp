@@ -12,49 +12,47 @@
             <h4 class="modal-title">Share Document</h4>
         </div>
         <div class="modal-body">
-            <form class="form-horizontal">
+            <g:uploadForm class="form-horizontal" controller="documentResource">
 
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Document* </label>
                     <div class="col-sm-10">
                         <div class="col-sm-6">
-                            <input type="passward" class="form-control" id="inputEmail3">
+                            <input type="file" class="form-control" name="file">
                         </div>
                         <div class="col-sm-6">
-                            <button type="submit" class="btn btn-primary">Browse</button>
+
+
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Discription* </label>
+                    <label for="discription" class="col-sm-2 control-label">Discription* </label>
                     <div class="col-sm-10">
-                        <input type="textbox" class="form-control" id="inputEmail3">
+                        <g:textField class="form-control" name="discription"></g:textField>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Topic* </label>
+                    <label for="topic" class="col-sm-2 control-label">Topic* </label>
                     <div class="col-sm-10">
-                        <select class="form-control">
-                            <option>Topic</option>
-                            <option>   </option>
-                            <option>    </option>
-                            <option>      </option>
-                            <option>   </option>
-                        </select>
+                        <g:select name="topic" from="${session.user.getSubscribedTopics()}"
+                                  class="btn btn-default dropdown-toggle" type="button"
+                                  data-toggle="dropdown">
+                        </g:select>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-offset-6 col-sm-2">
-                        <button class="btn btn-primary btn-sm">Share</button>
+                        <g:actionSubmit class="btn btn-primary" value="Share" action="upload"/>
                     </div>
                     <div class="col-sm-2">
-                        <button class="btn btn-primary btn-sm">Cancle</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
-            </form>
+            </g:uploadForm>
         </div>
     </div>
 </div>

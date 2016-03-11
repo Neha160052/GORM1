@@ -42,6 +42,19 @@ grails.views.default.codec = "html"
 grails.controllers.defaultScope = 'singleton'
 
 // GSP settings
+
+grails {
+    mail {
+        host = "smtp.gmail.com"
+        port = 465
+        username = "913nehasinghal@gmail.com"
+        password = "9897152378"
+        props = ["mail.smtp.auth":"true",
+                 "mail.smtp.socketFactory.port":"465",
+                 "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+                 "mail.smtp.socketFactory.fallback":"false"]
+    }
+}
 grails {
     views {
         gsp {
@@ -88,6 +101,7 @@ grails.hibernate.osiv.readonly = false
 environments {
     development {
         grails.logging.jul.usebridge = true
+        uploadFolder = "/home/neha/Desktop/Project/"
     }
     production {
         grails.logging.jul.usebridge = false

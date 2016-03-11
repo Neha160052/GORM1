@@ -3,12 +3,17 @@
     <meta name="layout" content="main"/>
 </head>
 <body>
+<g:if test="${flash.error}">
+    <div class="alert alert-error" style="display: block">${flash.error}</div>
+</g:if>
+<g:if test="${flash.message}">
+    <div class="message" style="display: block">${flash.message}</div>
+</g:if>
 <div class="container">
     <div class="col-sm-6" style="margin:15px">
         <g:render template="/resource/show" map="${recentResources}"/>
         <div class="row">
             <div class="panel panel-default">
-
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-sm-8"><h3 class="panel-title">Top Posts</h3></div>

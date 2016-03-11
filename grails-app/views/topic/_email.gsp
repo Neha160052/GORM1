@@ -7,12 +7,12 @@
                 <h4 class="modal-title">Send Invitation</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal">
 
+                <g:form class="form-horizontal">
                     <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">Email* </label>
+                        <label for="email" class="col-sm-2 control-label">Email* </label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" parseholder="Email" >
+                            <g:textField class="form-control" name="email"></g:textField>
                         </div>
                     </div>
 
@@ -21,12 +21,9 @@
 
                         <div class="col-xs-8">
                         <span class="dropdown" id="topics">
-                            <g:select name="Topics" from="${Topic.findAll()}" class="btn btn-default dropdown-toggle" type="button"
-                                      data-toggle="dropdown">Topics
-                                <span class="caret"></span>
-                                <ul class="dropdown-menu">
-
-                                </ul>
+                            <g:select name="topic" from="${session.user.getSubscribedTopics()}"
+                                      class="btn btn-default dropdown-toggle" type="button"
+                                      data-toggle="dropdown">
                             </g:select>
                         </span>
                     </div>
@@ -39,7 +36,8 @@
                             <button class="btn btn-primary btn-sm">Cancle</button>
                         </div>
                     </div>
-                </form>
+                        </g:form>
+
                 <div>
                 </div>
             </div>

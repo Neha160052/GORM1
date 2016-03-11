@@ -37,7 +37,7 @@
                             <span class="fa fa-google-plus"></span>
                         </div>
                         <div class="col-sm-4">
-                            <g:link controller="topic" action="index">View Post</g:link>
+                            <g:link controller="resource" action="show" params="[id:recentResource?.id]">View Post</g:link>
                         </div>
                     </div>
                 </div>

@@ -15,7 +15,9 @@
                 <div class="row" style="font-size:15px">
                     <div class="col-sm-4" style="font-size:8px">${resources.createdBy}</div>
                     <div class="col-sm-6" style="font-size:8px"><p class="text-muted">@${resources.createdBy} 10min</p></div>
-                    <div class="col-sm-2" style="font-size:8px"><a hrf="">Grails</a></div>
+                    <div class="col-sm-2" style="font-size:8px">
+                        <g:link controller="topic" action="show" params="[topicId:resources.topic.id]">${resources.topic}</g:link>
+                    </div>
                 </div>
 
                 <div class="row">
@@ -31,12 +33,8 @@
                         </span>
                     </div>
                     <div class="col-sm-9">
-                        <span>
-                            <a href="#"><u>View Post</u> </a>
-                            <a href="#"><u>View Post</u> </a>
-                            <a href="#"><u>View Post</u> </a>
-                            <a href="#"><u>View Post</u> </a>
-                        </span>
+
+                        <ls:resourceType resourceId="${resources.id}"/>
                     </div>
                 </div>
             </div>

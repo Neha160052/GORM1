@@ -30,7 +30,9 @@
 	<g:if test="${session.user}">
 		<div class="well" style="font-size:25px">
 			<div class="row">
-				<div class="col-sm-4"><a hrf="" ><u>Link sharing</u></a></div>
+				<div class="col-sm-4">
+					<g:link controller="login" action="index"><u>Link sharing</u></g:link>
+				</div>
 				<div class="col-sm-3"><input type="text" class="form-control" placeholder="Search" name="q" ></div>
 				<div class="col-sm-3">
 					<span>
@@ -45,14 +47,12 @@
 					<span>
 						<i class="glyphicon glyphicon-user" text="Create Topic"></i>
 						<div class="btn-group">
-							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Uday<span class="caret"></span>
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${session.user}<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
 								<li><a href="#">Profile</a></li>
 								<li><a href="#">Users</a></li>
-								<li><a href="#">Topics</a></li>
-								<li><a href="#">Posts</a></li>
-								<li><a href="#">Logout</a></li>
+								<li><g:link controller="login" action="logout">Logout</g:link></li>
 							</ul>
 						</div>
 					</span>
@@ -62,6 +62,9 @@
 
 		<div id="slModal" class="modal fade">
 			<g:render template="/linkResource/create" />
+		</div>
+		<div id="sdModal" class="modal fade">
+			<g:render template="/documentResource/create" />
 		</div>
 
     </g:if>
@@ -92,9 +95,7 @@
 		<g:render template="/topic/email" />
 	</div>
 
-	<div id="sdModal" class="modal fade">
-		<g:render template="/documentResource/create" />
-	</div>
+
 
 		%{--<div class="well" style="font-size:25px">
 			<div class="row">
