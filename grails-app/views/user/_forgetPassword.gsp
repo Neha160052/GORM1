@@ -11,31 +11,17 @@
         </div>
 
     <div class="modal-body">
-        <g:form class="form-horizontal" controller="user" action="forgetPassword">
-            <div class="form-group">
-                <label for="password" class=" col-xs-4">Password</label>
+        <g:form class="form-horizontal" controller="user" action="mailDemo">
+         <p>To reset your password, enter the email address you use to sign in to Google.</p>
 
-                <div class="col-xs-8">
-                    <g:textField class="form-control" name="password"></g:textField>
-                </div>
-            </div>
 
             <div class="form-group">
-                <label for="newPassword" class=" col-xs-4">New Password</label>
-
-                <div class="col-xs-8">
-                    <g:textField class="form-control" name="newPassword"></g:textField>
+                <label for="email" class="col-sm-2 control-label">Email Id* </label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" placeholder="Email" name="email"
+                            id="email">
                 </div>
             </div>
-
-            <div class="form-group">
-                <label for="confirmPassword" class=" col-xs-4">ConfirmPasswordPassword</label>
-
-                <div class="col-xs-8">
-                    <g:textField class="form-control" name="confirmPassword"></g:textField>
-                </div>
-            </div>
-
 
             </div>
 

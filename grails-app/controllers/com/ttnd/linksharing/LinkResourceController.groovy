@@ -3,7 +3,7 @@ package com.ttnd.linksharing
 class LinkResourceController {
     static scaffold = true
 
-    def index() { }
+
 
     def saveLinkResource(String url, String discription, String topicName){
         User user=session.user
@@ -11,19 +11,20 @@ class LinkResourceController {
         println topicName
         Resource linkResource=new LinkResource(url: url,discription:discription,createdBy: user,topic: topic)
         if(linkResource.validate()){
-            linkResource.save(flush: true)
+            linkResource.save(flush: true,failOnError: true)
             flash.message="Link Resource Saved"
-            forward controller: "login", action: "loginHandler"
+
         }
         else{
             def err
             if(linkResource.hasErrors()) {
-                err = linkResource.errors
+                err = linkResource.errors.allErrors.collect { message(error: it) }.join(',')
             }
-            render text: "Link Resource not Saved"+err
+            flash.error=err
 // render "problrmmmmmmmmmm"
            // redirect(controller: 'user',action: 'index')
 
         }
+        forward(controller: "login",action: "loginHandler" ,params: [username:session.user.username,password:session.user.password])
     }
 }

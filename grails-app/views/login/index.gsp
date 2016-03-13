@@ -4,10 +4,10 @@
 </head>
 <body>
 <g:if test="${flash.error}">
-    <div class="alert alert-error" style="display: block">${flash.error}</div>
+    <div class="alert alert-danger" style="display: block">${flash.error}</div>
 </g:if>
 <g:if test="${flash.message}">
-    <div class="message" style="display: block">${flash.message}</div>
+    <div class="alert alert-success" style="display: block">${flash.message}</div>
 </g:if>
 <div class="container">
     <div class="col-sm-6" style="margin:15px">

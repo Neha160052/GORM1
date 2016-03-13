@@ -1,5 +1,8 @@
 package com.ttnd.linksharing
 
+
+import vo.PostVO
+
 class User {
 
     String email
@@ -59,6 +62,20 @@ class User {
         subscribedTopics
     }
 
+    List<PostVO> getInboxItems() {
+        List<PostVO> readingItemsList = [];
+        ReadingItem.findAllByUser(this, [max:5, offset: 0]).each {
+            readingItemsList.add(new PostVO(topicId: it.resource.topic.id, resourceID: it.resource.id, description: it.resource.discription,
+                    topicName: it.resource.topic.name, userId: it.user.id, userUserName: it.resource.createdBy.username,
+                    userFirstName: it.resource.createdBy.firstName, userLastName: it.resource.createdBy.lastName,
+                    isRead: it.isRead,
+                    url: it.resource.class.toString().equals(LinkResource) ? it.resource.toString() : "",
+                    filePath: it.resource.class.toString().equals(DocumentResource) ? it.resource.toString() : ""))
+
+        }
+        return readingItemsList
+
+    }
 
     boolean isSubscribed(String topicName){
         Topic topic=Topic.findByName(topicName)

@@ -1,4 +1,4 @@
-package VO
+package vo
 
 /**
  * Created by neha on 24/2/16.

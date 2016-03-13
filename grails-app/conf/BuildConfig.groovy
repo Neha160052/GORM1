@@ -65,6 +65,8 @@ grails.project.dependency.resolution = {
         // plugins for the compile step
         compile ":scaffolding:2.1.2"
         compile ':cache:1.1.8'
+        compile "org.grails.plugins:codenarc:0.25.1"
+
         // asset-pipeline 2.0+ requires Java 7, use version 1.9.x with Java 6
         compile ":asset-pipeline:2.5.7"
 
@@ -79,4 +81,14 @@ grails.project.dependency.resolution = {
         //compile ":coffee-asset-pipeline:1.8.0"
         //compile ":handlebars-asset-pipeline:1.3.0.3"
     }
+    codenarc {
+        ruleSetFiles = "file:grails-app/conf/CodeNarcRules.groovy"
+        reports = {
+            HtmlReport('html') {                  // Report type is 'html'
+                outputFile = 'target/CodeNarcReport.html'
+                title = 'My Test Code Narc Report'
+            }
+        }
+    }
+
 }

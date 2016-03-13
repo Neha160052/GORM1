@@ -1,4 +1,4 @@
-package CO
+package co
 
 import grails.validation.Validateable
 import org.springframework.web.multipart.MultipartFile
@@ -22,7 +22,7 @@ class RegisterCO {
         username(blank: false)
         userPhoto(nullable: true)
         confirmPassword(bindable: true, nullable: true, blank: true, validator: { val, user ->
-            return (val != null) && val.equals(user.password) ?: "com.tothenew.co.RegisterCO.confirmPassword.validator"
+            return (val != null) && val.equals(user.password) ?: "password.do.not.match.confirmPassword"
         })
     }
 

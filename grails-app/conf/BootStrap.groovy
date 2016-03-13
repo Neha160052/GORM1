@@ -35,7 +35,7 @@ class BootStrap {
     }
 
     User createAdmin() {
-        User admin = new User(firstName: "Neha", lastName: "Singhal", username: "Neha", email: "neha@gmail.com",confirmPassword: "123456", password: "123456", admin: 1)
+        User admin = new User(firstName: "Neha", lastName: "Singhal", username: "Neha", email: "neha.singhal@tothenew.com",confirmPassword: "123456", password: "123456", admin: 1)
         if (admin.save()) {
             log.info "User ${admin} saved successfully"
         } else {
@@ -101,7 +101,7 @@ class BootStrap {
     List<LinkResource> createLinkResources(Topic topic) {
         List<LinkResource> linkResources = []
         (1..2).each {
-            LinkResource linkResource = new LinkResource(topic: topic, createdBy: topic.createdBy, discription: "${topic.name}'s url Description", url: "https://www.${topic.name}${it}.com")
+            LinkResource linkResource = new LinkResource(topic: topic, createdBy: topic.createdBy, discription: "${topic.name}'s url Description", url: "https://www.google.co.in/?gfe_rd=cr&ei=LIfkVoD1EseM8QeU6aagCg")
             if (linkResource.save()) {
                 linkResources.add(linkResource)
                 log.info "${topic} ${it}"
@@ -115,7 +115,7 @@ class BootStrap {
       List<DocumentResource> createDocumentResources(Topic topic) {
           List<DocumentResource> documentResources = []
           (1..2).each {
-              DocumentResource documentResource = new DocumentResource(topic: topic, createdBy: topic.createdBy, discription: "${topic.name} Description of document", filePath: "/home/neha/Desktop/${topic}${it}",fileName: "Document${it}")
+              DocumentResource documentResource = new DocumentResource(topic: topic, createdBy: topic.createdBy, discription: "${topic.name} Description of document", filePath: "/home/neha/Desktop/Project/errors.odt",fileName: "Document${it}")
               if (documentResource.save()) {
                   documentResources.add(documentResource)
                   log.info "${topic} ${it}"

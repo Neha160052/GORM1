@@ -44,7 +44,7 @@
                         <g:submitButton class="btn btn-primary" name="Save">Save</g:submitButton>
                     </div>
                     <div class="col-sm-2">
-                        <button class="btn btn-primary btn-sm">Cancle</button>
+                        <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
 

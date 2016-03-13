@@ -10,4 +10,7 @@ class ReadingItem {
     static constraints = {
         resource(unique: ['user'])
     }
+    String toString(){
+        return "${resource} ${user}"
+    }
 }

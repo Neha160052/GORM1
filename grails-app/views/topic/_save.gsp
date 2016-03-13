@@ -14,6 +14,7 @@
                     <div class="col-xs-8">
                         <g:textField class="form-control" name="topicName"
                                      placeholder="Name"></g:textField>
+                        <div class="alert-danger"><g:fieldError field="password" bean="${topic}"/></div>
                     </div>
                 </div>
                 <div class="form-group">

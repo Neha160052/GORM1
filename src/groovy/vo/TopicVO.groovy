@@ -1,4 +1,4 @@
-package VO
+package vo
 
 import com.ttnd.linksharing.Visibility
 

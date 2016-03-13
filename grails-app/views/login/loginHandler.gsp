@@ -1,5 +1,5 @@
 
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="com.ttnd.linksharing.Topic" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta name="layout" content="main"/>
@@ -9,11 +9,13 @@
 
 <body>
 <g:if test="${flash.error}">
-    <div class="alert alert-error" style="display: block">${flash.error}</div>
+    <div class="alert alert-warning" style="display: block">${flash.error}</div>
 </g:if>
 <g:if test="${flash.message}">
-    <div class="message" style="display: block">${flash.message}</div>
+    <div class="alert alert-success" style="display: block">${flash.message}</div>
 </g:if>
+
+
 <div class="container">
 <div class="col-sm-6">
 
@@ -44,7 +46,9 @@
                 </div>
             </div>
         </div>
+        <div class="row" style="margin: 5px">
         <g:render template="/topic/subscribedTopics" map="${subscribedTopics}"/>
+         </div>
     <div class="row">
         <ls:trendingTopics/>
     </div>
@@ -52,7 +56,8 @@
 </div>
 
 <div class="col-sm-6">
-    <g:render template="/user/index"/>
+
+    <g:render template="/user/index" map="${readingItems}"/>
 </div>
 </div>
 </body>

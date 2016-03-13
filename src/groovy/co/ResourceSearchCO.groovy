@@ -1,4 +1,4 @@
-package CO
+package co
 import com.ttnd.linksharing.Visibility
 
 class ResourceSearchCO extends SearchCO{

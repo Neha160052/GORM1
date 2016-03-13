@@ -15,7 +15,7 @@
             <g:uploadForm class="form-horizontal" controller="documentResource">
 
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Document* </label>
+                    <label for="file" class="col-sm-2 control-label">Document* </label>
                     <div class="col-sm-10">
                         <div class="col-sm-6">
                             <input type="file" class="form-control" name="file">

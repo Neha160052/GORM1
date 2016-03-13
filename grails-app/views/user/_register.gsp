@@ -4,14 +4,13 @@
         <div class="panel-heading">
             <h3 class="panel-title">Register</h3>
         </div>
-        <g:uploadForm class="form-horizontal" style="font-size:10px" controller="user">
+        <g:uploadForm class="form-horizontal" style="font-size:10px" controller="user" enctype="multipart/form-data">
             <div style="margin:15px" >
                 <div class="form-group">
                     <label for="firstName" class="col-sm-2 control-label">First Name*</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" placeholder="First name" name="firstName"
                                value="${registerCO?.firstName}" id="firstName">
-
                         <div class="alert-danger"> <g:fieldError field="firstName" bean="${registerCO}"></g:fieldError></div>
                     </div>
                 </div>
@@ -64,12 +63,9 @@
                 <div class="form-group">
                     <label for="userPhoto" class="col-sm-2 control-label">Photo </label>
                     <div class="col-sm-10">
-                        <div class="col-sm-6">
-                            <g:textField class="form-control" name="userPhoto"></g:textField>
-                        </div>
-                        <div class="col-sm-6">
-                            <button type="submit" class="btn btn-primary">Browse</button>
-                        </div>
+
+                            <input type="file" class="form-control" name="userPhoto" id="userPhoto">
+
                     </div>
                 </div>
 

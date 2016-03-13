@@ -3,7 +3,7 @@
 <meta name="layout" content="main"/>
 </head>
 <body>
-<ls:resourceType resourceId="${4} "></ls:resourceType>
+
 <ls:isRead resourceId="1">
 
 </ls:isRead>
@@ -18,5 +18,8 @@
 
 </ls:subscriptionCount>
 <g:link controller="documentResource" action="download">hello</g:link>
+<ls:canDeleteResource resourceId="4">
+
+</ls:canDeleteResource>
 </body>
 </html>

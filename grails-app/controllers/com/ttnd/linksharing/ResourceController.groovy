@@ -1,7 +1,6 @@
 package com.ttnd.linksharing
 
-import CO.ResourceSearchCO
-import VO.RatingInfoVO
+import co.ResourceSearchCO
 
 class ResourceController {
     // static scaffold =Resource
@@ -17,16 +16,13 @@ class ResourceController {
     }
 
     def show(long id) {
-        User user = session.user
         Resource resource = Resource.get(id)
         [resource: resource]
     }
 
     def delete(long id) {
-        User user = session.user
-        print user
         Resource resource = Resource.get(id)
-        if (user.canDeleteResource(resource)) {
+        if (session.user.canDeleteResource(resource)) {
             resource.delete()
             render "Resource is detleted"
         } else {

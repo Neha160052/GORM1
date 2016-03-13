@@ -1,7 +1,7 @@
 package com.ttnd.linksharing
 
-import CO.ResourceSearchCO
-import VO.RatingInfoVO
+import co.ResourceSearchCO
+import vo.RatingInfoVO
 
 abstract  class Resource  {
     String discription

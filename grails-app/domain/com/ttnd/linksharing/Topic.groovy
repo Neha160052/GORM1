@@ -1,6 +1,6 @@
 package com.ttnd.linksharing
 
-import VO.TopicVO
+import vo.TopicVO
 
 class Topic {
 

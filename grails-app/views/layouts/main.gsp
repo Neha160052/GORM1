@@ -89,7 +89,7 @@
 		<g:layoutBody/>
 
 	<div id="ctModal" class="modal fade">
-		<g:render template="/topic/ceateTopic" />
+		<g:render template="/topic/save" />
 	</div>
 	<div id="siModal" class="modal fade">
 		<g:render template="/topic/email" />
