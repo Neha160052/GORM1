@@ -11,10 +11,7 @@
 </div>
 
 <div class="col-sm-6">
-    <g:if test="${session}">
         <ls:trendingTopics/>
-    </g:if>
-
 </div>
 </body>
 </html>

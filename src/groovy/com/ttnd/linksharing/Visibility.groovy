@@ -1,11 +1,19 @@
 package com.ttnd.linksharing
 
-/**
- * Created by neha on 24/2/16.
- */
+
 enum Visibility {
-    PUBLIC,
-    PRIVATE
+    PUBLIC("Public"),
+    PRIVATE("Private")
+
+    final String value
+
+    Visibility(String value) {
+        this.value = value
+    }
+
+    String toString() { value }
+
+    String getKey() { name() }
 
 
    static Visibility getEnum(String visibility){

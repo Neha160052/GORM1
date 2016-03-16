@@ -3,7 +3,7 @@
 <meta name="layout" content="main"/>
 </head>
 <body>
-
+<g:render template="/topic/dummy"/>
 <ls:isRead resourceId="1">
 
 </ls:isRead>
@@ -21,5 +21,13 @@
 <ls:canDeleteResource resourceId="4">
 
 </ls:canDeleteResource>
+<script>
+    function toggleTopicEditName(){
+        var div = document.getElementById('demoId');
+
+        if (!div.style.display || div.style.display === 'block') div.style.display = 'none';
+        else div.style.display = 'block';
+    }
+</script>
 </body>
 </html>

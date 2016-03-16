@@ -1,6 +1,7 @@
 package com.ttnd.linksharing
 
 import co.ResourceSearchCO
+import grails.converters.JSON
 import vo.TopicVO
 
 class TopicController {
@@ -19,6 +20,18 @@ class TopicController {
             render "id=${it.id},name=${it.name},createdBy=${it.createdBy},visibilty=${it.visibility},count=${it.count}"
         }
     }
+
+    def edit(){
+        Topic topic=Topic.get(params.long('id'))
+        topic.name=params.topicName
+        topic.visibility=Visibility.getEnum(params.visibility)
+        if(topic.save(flush: true)){
+            render "success"
+        }else{
+            render "Not Success"
+        }
+    }
+
 
     def show(ResourceSearchCO co) {
         Topic topic = Topic.read(co.topicId)
@@ -58,6 +71,21 @@ class TopicController {
         forward(controller: "login",action: "loginHandler" ,params: [username:session.user.username,password:session.user.password])
     }
 
+    def updateTopic(String topicUpdatedName,String topicName,long topicId){
+        if(topicUpdatedName){
+            Topic topic=Topic.get(topicId)
+            topic.name=topicUpdatedName
+            if(topic.save(flush: true)){
+                flash.message="Topic updated successfully"
+            }else{
+                flash.error="Topic not updated successfully"
+            }
+        }else{
+              flash.error="Topic name can not be blank"
+        }
+        redirect(controller: "login" ,action: "index")
+    }
+
     def sendInvitation(){
         User user=User.findByEmail(params.email)
         if(user){
@@ -72,6 +100,30 @@ class TopicController {
            flash.error="User not found with email Id - ${params.email}"
         }
         forward(controller: "login",action: "loginHandler" ,params: [username:session.user.username,password:session.user.password])
+    }
+
+    def  changeVisibility(long topicId,String visibilityString){
+        Topic topic=Topic.get(topicId)
+        Map resultInfo = [1:"one"]
+        topic.visibility=Visibility.getEnum(visibilityString)
+        if(topic.save(flush: true)){
+            flash.message="Visibility updated successfully"
+        }else{
+            flash.error="Visibility updated successfully"
+        }
+        render(resultInfo as JSON)
+        }
+
+    def delete(Long topicId) {
+        Topic topic = Topic.get(topicId)
+        User user = session.user
+        if (topic && user && user.hasTopicRight(topicId)) {
+            topic.delete(flush: true)
+            flash.message = "Successfully topic delete"
+        } else {
+            flash.error = "Topic not found"
+        }
+       redirect(controller: 'login', action: 'index')
     }
 
 }

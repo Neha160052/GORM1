@@ -35,7 +35,7 @@ class BootStrap {
     }
 
     User createAdmin() {
-        User admin = new User(firstName: "Neha", lastName: "Singhal", username: "Neha", email: "neha.singhal@tothenew.com",confirmPassword: "123456", password: "123456", admin: 1)
+        User admin = new User(firstName: "Neha", lastName: "Singhal", username: "Neha", email: "neha.singhal@tothenew.com",confirmPassword: "123456", password: "123456", admin: true,active: true)
         if (admin.save()) {
             log.info "User ${admin} saved successfully"
         } else {

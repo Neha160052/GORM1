@@ -1,9 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: neha
-  Date: 4/3/16
-  Time: 1:23 PM
---%>
+
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
@@ -53,5 +48,24 @@
 </div>
 
 </div>
+<script>
+    $("#topic-post-search-button").on('click', function () {
+        alert("Hello")
+        var url = "/Linksharing/resource/search";
+        var searchText = $("#topic-post-search-textbox").val();
+        if (searchText != "") {
+            var data = {topicId: $("#hidden-topic-id").val(), q: searchText};
+            var success = function (result) {
+                $("#post-panel-body").html(result)
+            };
+            $.ajax({
+                url:url,
+                data:data,
+                success:success
+            })
+        }
+
+    });
+</script>
 </body>
 </html>

@@ -12,19 +12,15 @@
                 <div class="form-group">
                     <label for="url" class="col-sm-2 control-label">link* </label>
                     <div class="col-sm-10">
-                        <div class="col-sm-6">
                             <g:textField class="form-control" name="url"></g:textField>
-                        </div>
-                        <div class="col-sm-6">
-                            <button type="submit" class="btn btn-primary">Browse</button>
-                        </div>
+
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="discription" class="col-sm-2 control-label">Discription* </label>
                     <div class="col-sm-10">
-                        <g:textField class="form-control" name="discription"></g:textField>
+                        <g:textArea class="form-control" name="discription"></g:textArea>
                     </div>
                 </div>
 

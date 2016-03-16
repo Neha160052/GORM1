@@ -1,11 +1,18 @@
 package com.ttnd.linksharing
-/**
- * Created by neha on 24/2/16.
- */
+
 enum Seriousness {
-    SERIOUS,
-    VERY_SERIOUS,
-    CASUAL
+    SERIOUS("Serious"),
+    VERY_SERIOUS("Very serious"),
+    CASUAL("Casual")
+
+    final String value
+
+    Seriousness(String value) {
+        this.value = value
+    }
+    String toString() { value }
+
+    String getKey() { name() }
 
     static Seriousness getEnum(String visibility) {
         return Seriousness.valueOf(visibility.toUpperCase())

@@ -22,7 +22,9 @@ class Topic {
 
     static mapping = {
         sort name: 'asc'
-        subscriptions lazy: false
+//        subscriptions lazy: false
+//        resources cascade: 'all-delete-orphan'
+//        subscriptions cascade: 'all-delete-orphan'
     }
 
     String toString() {

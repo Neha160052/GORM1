@@ -17,20 +17,14 @@
                 <div class="form-group">
                     <label for="file" class="col-sm-2 control-label">Document* </label>
                     <div class="col-sm-10">
-                        <div class="col-sm-6">
                             <input type="file" class="form-control" name="file">
-                        </div>
-                        <div class="col-sm-6">
-
-
-                        </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="discription" class="col-sm-2 control-label">Discription* </label>
                     <div class="col-sm-10">
-                        <g:textField class="form-control" name="discription"></g:textField>
+                        <g:textArea class="form-control" name="discription"></g:textArea>
                     </div>
                 </div>
 

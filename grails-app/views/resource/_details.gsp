@@ -28,13 +28,14 @@
                     <i class="fa fa-google-plus"></i>
                 </span>
             </div>
-            <div class="col-sm-3">
-
+            <div class="col-sm-2">
                 <ls:resourceType resourceId="${resource.id}"/>
-                %{--<ls:resourceType resourceId="${resource.id} "/>--}%
             </div>
-            <div class="col-sm-3">
-
+            <div class="col-sm-2">
+                <ls:canDeleteResource resourceId="${resource?.id}"></ls:canDeleteResource>
+            </div>
+            <div class="col-sm-2">
+                <ls:canUpdateResource resourceId="${resource?.id}"></ls:canUpdateResource>
             </div>
         </div>
         </div>

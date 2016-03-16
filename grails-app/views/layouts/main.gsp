@@ -10,9 +10,9 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title><g:layoutTitle default="Grails"/></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
-		<link rel="apple-touch-icon" href="${assetPath(src: 'apple-touch-icon.png')}">
-		<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
+		<link rel="shortcut icon" href="${assetPath(src: 'linksharingsite22.png')}" type="image/x-icon">
+		<link rel="apple-touch-icon" href="${assetPath(src: 'linksharingsite22.png')}">
+		<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'linksharingsite22.png')}">
 
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -23,6 +23,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	%{--<asset:javascript src="application.js"/>--}%
 
 	<g:layoutHead/>
 	</head>
@@ -50,8 +51,10 @@
 							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${session.user}<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
-								<li><a href="#">Profile</a></li>
-								<li><a href="#">Users</a></li>
+								<li><g:link controller="User" action="changeProfile">Profile</g:link></li>
+								<g:if test="${session.user?.admin}">
+									<li><g:link controller="user" action="list">Users</g:link> </li>
+								</g:if>
 								<li><g:link controller="login" action="logout">Logout</g:link></li>
 							</ul>
 						</div>
