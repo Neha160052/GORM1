@@ -72,6 +72,7 @@ class TopicController {
     }
 
     def updateTopic(String topicUpdatedName,String topicName,long topicId){
+        println topicName
         if(topicUpdatedName){
             Topic topic=Topic.get(topicId)
             topic.name=topicUpdatedName
@@ -114,16 +115,16 @@ class TopicController {
         render(resultInfo as JSON)
         }
 
-    def delete(Long topicId) {
-        Topic topic = Topic.get(topicId)
-        User user = session.user
-        if (topic && user && user.hasTopicRight(topicId)) {
-            topic.delete(flush: true)
-            flash.message = "Successfully topic delete"
-        } else {
-            flash.error = "Topic not found"
-        }
-       redirect(controller: 'login', action: 'index')
-    }
+//    def delete(Long topicId) {
+//        Topic topic = Topic.get(topicId)
+//        User user = session.user
+//        if (topic && user && user.hasTopicRight(topicId)) {
+//            topic.delete(flush: true)
+//            flash.message = "Successfully topic delete"
+//        } else {
+//            flash.error = "Topic not found"
+//        }
+//       redirect(controller: 'login', action: 'index')
+//    }
 
 }

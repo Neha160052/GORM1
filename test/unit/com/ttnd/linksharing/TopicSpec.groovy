@@ -7,11 +7,7 @@ import spock.lang.Specification
 
 class TopicSpec extends Specification {
 
-    def setup() {
-    }
 
-    def cleanup() {
-    }
 
     void "Topic Name should be unique per user"() {
 

@@ -11,9 +11,9 @@
                                value="${topic?.createdBy}"/>
                         <input type="hidden" id="topic-hidden-topic-id-${uniqueIdForTopicEdit}"
                                value="${topic?.id}"/>
-                        <input type="text" class="form-control col-sm-10"
+                        <input type="text" class="form-control col-sm-10" value="${topic.name}"
                                id="topic-name-edit-textbox-${uniqueIdForTopicEdit}">
-                        <button type="button" class="btn btn-primary"
+                        <button type="button" class="btn btn-default"
                                 onclick="updateTopic(${uniqueIdForTopicEdit})">save</button>
                         <button type="button" class="btn btn-default"
                                 onclick="toggleTopicEditName(${uniqueIdForTopicEdit})">cancel</button>
@@ -59,9 +59,15 @@
                 </div>
                 <i class="fa fa-pencil-square-o" style="font-size:25px;color: #337ab7;"
                    onclick="toggleTopicEditName(${uniqueIdForTopicEdit})"></i>
-                <g:link  controller="topic" action="delete" class="glyphicon glyphicon-trash" style="font-size:25px;color: #337ab7" id="deleteTopic" params="[topicId:topic?.id]"></g:link>
+                <a  href="#" class="glyphicon glyphicon-trash" style="font-size:25px;color: #337ab7" id="deleteTopic"></a>
             </ls:canUpdateTopic>
-            <ls:showInvitation class="fa fa-envelope-o"  topicId="${topic?.id}" title="Invite friends"/>
+            %{--<ls:showInvitation class="fa fa-envelope-o"  topicId="${topic?.id}" title="Invite friends" data-toggle="modal" data-target="#siModal"/>--}%
+                <ls:showInvitation topicId="${topic?.id}">
+                    <i class="fa fa-envelope-o" data-toggle="modal" data-target="#siModal-${topic?.name}" style="font-size:25px;color: #337ab7"></i>
+                    <div id="siModal-${topic?.name}" class="modal fade">
+                        <g:render template="/user/invitation" model="[topicName:topic?.name]"/>
+                    </div>
+                </ls:showInvitation>
 
         </div>
     </div>

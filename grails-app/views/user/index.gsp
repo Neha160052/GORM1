@@ -36,7 +36,6 @@
     </div>
 </div>
 <script>
-
     $(".unsubscribe").click(function (e) {
         e.preventDefault();
         var topicId = $(this).attr("topicId")
@@ -72,7 +71,6 @@
     function setSeriousnessOnchangeEvent() {
         $(".seriousness").change(function (e) {
             e.preventDefault();
-            alert("jhgfds")
             $.ajax({
                 url: "/Linksharing/subscription/update",
                 data: {topicId: $(this).attr('topicId'), seriousnessString: $(this).val()},
@@ -88,7 +86,6 @@
     function setVisibilityOnChangeEvent() {
         $(".visibility").change(function (e) {
             e.preventDefault();
-            alert("Hello")
             $.ajax({
                 url: "/Linksharing/topic/changeVisibility",
                 data: {topicId: $(this).attr('topicId'), visibilityString: $(this).val()},
@@ -102,19 +99,7 @@
     }
     setVisibilityOnChangeEvent();
 
-    function setInviteModal() {
-        $(".fa-envelope-o").on('click', function (e) {
-            e.preventDefault()
-            alert("${this}.attr('topicId')");
-//            var url = "/user/subscribedTopics";
-//            var success = function (result) {
-//                $(".modal-topic-drop-down").html(result);
-//                $("#send-invitation-modal").modal('show');
-//            };
-//            ajaxRequest(url, '', success);
-       });
-   }
-    setInviteModal();
+
 
 
     $("#deleteTopic").click(function(e){

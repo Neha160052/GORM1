@@ -8,11 +8,7 @@ import spock.lang.Specification
 
 class SubscriptionSpec extends Specification {
 
-    def setup() {
-    }
 
-    def cleanup() {
-    }
 
     void "Test for uniqness of user"() {
 

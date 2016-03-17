@@ -97,7 +97,7 @@
                 </g:each>
             </table>
             <ul class="pagination pull-right">
-                <g:paginate total="${totalCount}" max="${userSearchCO?.max}" offset="${userSearchCO?.offset}"/>
+                <g:paginate total="${totalCount}" max="1" offset="${userSearchCO?.offset}"/>
             </ul>
         </div>
     </div>

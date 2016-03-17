@@ -104,7 +104,9 @@ class UserController {
     }
 
     def changeProfile(){
-
+        User user=session.user
+        def topics=user.topics
+        render(view:'changeProfile',model:[topics:topics])
     }
 
     def updateProfile(){
@@ -150,14 +152,14 @@ class UserController {
             mailService.sendMail {
                 to params.email
                 from "913nehasinghal@gmail.com"
-                subject "Hello John"
+                subject "Invitation For Topic ${params.topicName}"
                 body 'this is some text'
             }
             flash.message="your Invitation has been sent"
         }else {
             flash.error="User not found with email Id - ${params.email}"
         }
-        render(view: 'changeProfile')
+        redirect(controller: "login",action: "index")
     }
 
     def admin(){

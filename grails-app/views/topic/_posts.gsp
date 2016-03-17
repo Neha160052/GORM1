@@ -5,7 +5,13 @@
 
         <div class="panel-heading">
             <h3 class="panel-title">Posts: "${topic.name}"</h3>
-
+            %{--<div class="col-sm-offset-5">--}%
+            %{--<g:form class="form-inline" controller="resource" action="search">--}%
+            %{--<g:textField class="form-control" name="search" placeholder="search...."></g:textField>--}%
+            %{--<input type="hidden" name="topicId" value="${topic?.id}"/>--}%
+            %{--<g:submitButton name="search" ></g:submitButton>--}%
+            %{--</g:form>--}%
+            %{--</div>--}%
         </div>
         <div class="panel-body">
             <g:each in="${topic.resources}" var="resources">

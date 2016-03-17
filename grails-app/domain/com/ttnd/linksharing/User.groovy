@@ -153,7 +153,6 @@ class User {
         return username;
     }
 
-    def beforeInsert() {
-    }
+
 
 }

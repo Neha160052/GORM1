@@ -9,11 +9,7 @@ import spock.lang.Specification
 
 class LinkResourceSpec extends Specification {
 
-    def setup() {
-    }
 
-    def cleanup() {
-    }
 
     void "Validate Lnik Resources"() {
 

@@ -23,8 +23,8 @@ class Topic {
     static mapping = {
         sort name: 'asc'
 //        subscriptions lazy: false
-//        resources cascade: 'all-delete-orphan'
-//        subscriptions cascade: 'all-delete-orphan'
+ //       resources cascade: 'all-delete-orphan'
+ //       subscriptions cascade: 'all-delete-orphan'
     }
 
     String toString() {
@@ -57,19 +57,19 @@ class Topic {
     }
 
     boolean isPublic(long id) {
-        Topic topic=Topic.read(id)
-        if(topic.visibility==Visibility.PUBLIC){
+        Topic topic = Topic.read(id)
+        if (topic.visibility == Visibility.PUBLIC) {
             return true
-        }else {
+        } else {
             return false
         }
     }
 
-    boolean canViewedBy(long id,User user){
-        Topic topic=Topic.read(id)
-        if(isPublic(id)||topic.createdBy.id==user.id){
+    boolean canViewedBy(long id, User user) {
+        Topic topic = Topic.read(id)
+        if (isPublic(id) || topic.createdBy.id == user.id) {
             return true
-        }else {
+        } else {
             return false
         }
     }

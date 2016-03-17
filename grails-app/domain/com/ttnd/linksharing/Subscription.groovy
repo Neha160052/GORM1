@@ -18,5 +18,12 @@ class Subscription {
         user(lazy: false)
         topic(lazy: false)
     }
+
 // //static fetchMode=[subscribedBy:'eager',topic:'eager']
+    @Override
+    public String toString() {
+        return "Subscription{" +
+                "seriousness=" + seriousness +
+                '}';
+    }
 }

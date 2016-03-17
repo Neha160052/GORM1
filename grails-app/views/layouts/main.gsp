@@ -13,8 +13,7 @@
 		<link rel="shortcut icon" href="${assetPath(src: 'linksharingsite22.png')}" type="image/x-icon">
 		<link rel="apple-touch-icon" href="${assetPath(src: 'linksharingsite22.png')}">
 		<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'linksharingsite22.png')}">
-
-
+	%{--<asset:javascript src= "Linksharing.js" />--}%
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 	<!-- Optional theme -->
@@ -38,7 +37,7 @@
 				<div class="col-sm-3">
 					<span>
 						<i class="fa fa-comment" data-toggle="modal" data-target="#ctModal"></i>
-						<i class="fa fa-envelope" data-toggle="modal" data-target="#siModal"></i>
+						<i class="fa fa-envelope-o" data-toggle="modal" data-target="#siModal"></i>
 						<i class="fa fa-link" data-toggle="modal" data-target="#slModal"></i>
 						<i class="fa fa-file-o" data-toggle="modal" data-target="#sdModal"></i>
 
@@ -75,7 +74,7 @@
 	<g:else>
 		<div class="well" style="font-size:25px">
 			<div class="row">
-				<div class="col-sm-8"> <a href="#" ><u>Link sharing</u></a></div>
+				<div class="col-sm-8"> <g:link controller="login" action="index"><u>Link sharing</u></g:link></div>
 				<div class="col-sm-4">
 					<section id="search">
 						<label>

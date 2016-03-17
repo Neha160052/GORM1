@@ -1,4 +1,3 @@
-<%@ page import="com.ttnd.linksharing.Topic" %>
 
 <div class="modal-dialog">
     <div class="modal-content">
@@ -10,18 +9,17 @@
 
             <g:form class="form-horizontal" controller="User">
                 <div class="form-group">
+                <label for="email" class="col-sm-offset-1 control-label">Send invitation for ${topicName}</label>
+                </div>
+                <div class="form-group">
                     <label for="email" class="col-sm-2 control-label">Email* </label>
                     <div class="col-sm-10">
                         <g:textField class="form-control" name="email"></g:textField>
+                        <input type="hidden" value="${topicName}"/>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="topic" class="col-sm-2 control-label">Topic* </label>
-                    <div class="col-sm-10">
-                        <g:textField class="form-control" name="topic" value="${topicName}"></g:textField>
-                    </div>
-                </div>
+
 
                 <div class="form-group">
                     <div class="col-sm-offset-6 col-sm-2">

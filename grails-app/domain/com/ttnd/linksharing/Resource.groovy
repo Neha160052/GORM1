@@ -19,6 +19,10 @@ abstract  class Resource  {
         discription(blank:false)
     }
 
+    static mapping = {
+        rating  cascade: 'all-delete-orphan'
+
+    }
     RatingInfoVO getRatingInfo(){
         List result = ResourceRating.createCriteria().get {
             projections {

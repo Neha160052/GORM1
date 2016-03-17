@@ -17,10 +17,10 @@
 <div class="container">
     <div class="col-sm-6">
          <div class="row">
-             <g:render template="/user/userDetails"/>
+             <g:render template="/user/userDetails" model="[user:session.user]"/>
          </div>
          <div class="row" style="margin: 5px">
-             <g:render template="/user/topics" model="[topics:[]]"/>
+             <g:render template="/user/topics" model="[topics:topics,uniqueIdForTopicEdit:session.uniqueIdForTopicEdit]"/>
          </div>
     </div>
     <div class="col-sm-6">
